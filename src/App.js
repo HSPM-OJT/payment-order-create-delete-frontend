@@ -1,5 +1,4 @@
 import React from 'react';
-import Order from './component/order/Order';
 import Card from './ui/Card'
 function App() {
   
