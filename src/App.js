@@ -2,7 +2,6 @@ import React from 'react';
 import CategoryList from './component/categories/CategoryList';
 import Footer from './component/footer/Footer';
 import MainNavigation from './component/layout/MainNavigation';
-import Card from './ui/Card'
 function App() {
   
   return (
@@ -10,6 +9,10 @@ function App() {
         
         <MainNavigation />
         <CategoryList />
+        {/* <Routes>
+         <Route path='/' element={<CategoryList />}></Route>
+
+        </Routes> */}
        
          {/* <section className="section-name padding-y bg">
          <div className="container">
