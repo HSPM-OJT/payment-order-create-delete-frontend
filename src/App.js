@@ -321,7 +321,7 @@ function App() {
                <aside className="col-md col-6">
                <h6 className="title">Help</h6>
                <ul className="list-unstyled">
-                  <li> <a href="#">Contact us</a></li>
+                  <li> <a href="#">Contact usimport Order from './component/order/Order';</a></li>
                   <li> <a href="#">Money refund</a></li>
                   <li> <a href="#">Order status</a></li>
                   <li> <a href="#">Shipping info</a></li>
