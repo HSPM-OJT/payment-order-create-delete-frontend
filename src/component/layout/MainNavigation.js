@@ -1,7 +1,7 @@
 function MainNavigation() {
     
     return(
-        <header className="section-header">
+        <header className="section-header mb-3">
          <section className="header-main border-bottom">
             <div className="container">
          <div className="row align-items-center">
