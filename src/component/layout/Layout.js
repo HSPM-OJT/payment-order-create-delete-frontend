@@ -1,7 +1,6 @@
 import CategoryList from "../categories/CategoryList"
 import Footer from "../footer/Footer"
 import MainNavigation from "./MainNavigation"
-import classes from "./Layout.module.css"
 import ImageSlide from "./ImageSlide"
 
 function Layout(props){
