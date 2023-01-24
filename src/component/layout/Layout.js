@@ -14,8 +14,7 @@ function Layout(props){
             
 
             <main>
-
-                <CategoryList/>
+        {props.children}
             </main>
             <Footer />
 
