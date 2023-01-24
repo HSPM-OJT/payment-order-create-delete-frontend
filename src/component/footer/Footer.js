@@ -1,7 +1,10 @@
+import classes from "./Footer.module.css"
+
 function Footer() {
     
     return(
-        <footer className="section-footer border-top bg">
+      <div className={classes.bg}>
+        <footer className="section-footer border-top">
          <div className="container">
          <section className="footer-top  padding-y">
             <div className="row">
@@ -71,6 +74,7 @@ function Footer() {
          </section>
          </div>
          </footer>
+         </div>
     );
 }
 
