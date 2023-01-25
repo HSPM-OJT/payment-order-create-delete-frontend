@@ -28,7 +28,7 @@ function Scroll() {
         <div>
             {showButton && (
             <button onClick={scrollToTop} className={classes.top}>
-            &#8679;
+            <i class="fa-solid fa-angle-up"></i>
             </button>
           )}
         </div>

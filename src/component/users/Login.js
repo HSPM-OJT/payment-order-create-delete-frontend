@@ -30,7 +30,7 @@ function Login() {
         </div>
         <div class="row mb-4 text-center">
             <div class="col ">
-                <p>Do not have a account? <a href="#">signup</a></p>
+                <p>Don't have a account? <a href="#">signup</a></p>
             </div>
         </div>
     </form>

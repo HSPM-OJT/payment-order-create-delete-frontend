@@ -30,7 +30,7 @@ function Footer() {
                <aside className="col-md col-6">
                <h6 className="title">Help</h6>
                <ul className="list-unstyled">
-                  <li> <a href="#">Contact usimport Order from './component/order/Order';</a></li>
+                  <li> <a href="#">Contact us</a></li>
                   <li> <a href="#">Money refund</a></li>
                   <li> <a href="#">Order status</a></li>
                   <li> <a href="#">Shipping info</a></li>
@@ -59,7 +59,7 @@ function Footer() {
          </section>  
          <section className="footer-bottom row">
             <div className="col-md-2">
-               <p className="text-muted">   2021 Company name </p>
+               <p className="text-muted">   2023 <i class="fa-regular fa-copyright"></i> HSPM Store </p>
             </div>
             <div className="col-md-8 text-md-center">
                <span  className="px-2">info@com</span>
