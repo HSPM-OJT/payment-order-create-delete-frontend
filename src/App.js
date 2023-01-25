@@ -13,14 +13,10 @@ function App() {
   return (
     <Layout>
 
-  
-    
-        {/* <Order />  */}
-    
-
       <Routes>
        <Route path='/' element={<CategoryList />}></Route>
        <Route path='/login' element={<Login />}></Route>
+       <Route path='productlist' element={<ProductList />}></Route>
       </Routes>
 
       <Scroll />
