@@ -64,7 +64,7 @@ function Footer() {
             <div className="col-md-8 text-md-center">
                <span  className="px-2">info@com</span>
                <span  className="px-2">+000-000-0000</span>
-               <span  className="px-2">73C * 120, Pyi Gyi Dagon</span>
+               <span  className="px-2">73A * 120, Pyi Gyi Dagon</span>
             </div>
             <div className="col-md-2 text-md-end text-muted">
                <i className="fab fa-lg fa-cc-visa"></i> 

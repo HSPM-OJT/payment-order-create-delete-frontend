@@ -12,6 +12,10 @@ function MainNavigation() {
             <div className="container">
          <div className="row">
          <div className="col-lg-2">
+            <Link to='/' className="nav-link" >
+               <h2>HSPM Store </h2>
+            </Link>
+
            <h2>HSPM Tech </h2>
 
          </div>
