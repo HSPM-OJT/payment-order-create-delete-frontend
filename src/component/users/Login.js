@@ -2,8 +2,6 @@ import classes from "./Login.module.css"
 
 function Login() {
 
-    const forFrame = classes.frame + "bg-light shadow-lg p-3 mb-5 bg-body rounded"
-    
     return(
     <div className={classes.frame}>
     <div class="bg-light shadow-lg p-3 mb-5 bg-body rounded">
@@ -20,17 +18,14 @@ function Login() {
                 <input type="text" class="form-control form-control-lg" placeholder="Enter your password"/>
             </div>
         </div>
-        <div class="row mb-3">
-            
+        <div class="row mb-3"> 
             <div class="col text-center">
-            
                 <button class="btn btn-primary btn-lg">Login</button>
             </div>
-
         </div>
         <div class="row mb-4 text-center">
             <div class="col ">
-                <p>Don't have a account? <a href="#">signup</a></p>
+                <p>Don't have a account? <a href="#">Register</a></p>
             </div>
         </div>
     </form>

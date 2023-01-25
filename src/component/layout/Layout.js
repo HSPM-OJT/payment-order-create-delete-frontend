@@ -7,10 +7,11 @@ function Layout(props){
         <div className="container-fluid">
             <MainNavigation />
 
-            <main>
+        <main>
         {props.children}
-            </main>
-            <Footer />
+        </main>
+        
+        <Footer />
 
         </div>
     )
