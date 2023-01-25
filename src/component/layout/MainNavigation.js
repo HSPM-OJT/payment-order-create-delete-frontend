@@ -15,9 +15,6 @@ function MainNavigation() {
             <Link to='/' className="nav-link" >
                <h2>HSPM Store </h2>
             </Link>
-
-           <h2>HSPM Tech </h2>
-
          </div>
             <div className="col-lg-2 col-4 ps-5">
             <div class="dropdown">
