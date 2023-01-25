@@ -12,7 +12,7 @@ function MainNavigation() {
             <div className="container">
          <div className="row">
          <div className="col-lg-2">
-           <h2>HSPM </h2>
+           <h2>HSPM Tech </h2>
 
          </div>
             <div className="col-lg-2 col-4 ps-5">
