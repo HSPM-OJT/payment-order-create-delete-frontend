@@ -15,8 +15,8 @@ function Product() {
                 <p>CreatedAt</p>
                 <p>UpdatedAt</p>
                 <p>ExpiredDate</p>
-                <p>CategoryId</p>
-                <p>Status</p>
+                {/* <p>CategoryId</p>
+                <p>Status</p> */}
             </div>
             </Card>
             </div>
