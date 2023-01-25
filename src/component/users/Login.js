@@ -1,8 +1,6 @@
 import classes from "./Login.module.css"
 
 function Login() {
-
-    const forFrame = classes.frame + "bg-light shadow-lg p-3 mb-5 bg-body rounded"
     
     return(
     <div className={classes.frame}>
