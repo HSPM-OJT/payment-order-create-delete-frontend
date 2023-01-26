@@ -4,7 +4,6 @@ function Product() {
     
     return(
             <div className="col-md-3 mt-3 mb-3">
-            <h2 className="text-center">Product</h2>
             <Card>
             <div className="card card-body">
                 <p>ProductCode</p>
@@ -15,8 +14,8 @@ function Product() {
                 <p>CreatedAt</p>
                 <p>UpdatedAt</p>
                 <p>ExpiredDate</p>
-                <p>CategoryId</p>
-                <p>Status</p>
+                {/* <p>CategoryId</p>
+                <p>Status</p> */}
             </div>
             </Card>
             </div>
