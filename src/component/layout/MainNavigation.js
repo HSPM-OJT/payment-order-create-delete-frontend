@@ -6,14 +6,14 @@ function MainNavigation() {
     return(
       <div className={classes.bg}>
       <div className="p-3 mb-5 rounded">
-      
         <header className="section-header mb-3">
          <section className="header-main">
             <div className="container">
          <div className="row">
          <div className="col-lg-2">
-           <h2>HSPM Tech </h2>
-
+            <Link to='/' className="nav-link" >
+               <h2>HSPM Store </h2>
+            </Link>
          </div>
             <div className="col-lg-2 col-4 ps-5">
             <div class="dropdown">
