@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./Login.module.css"
 
 function Login() {
@@ -25,7 +26,7 @@ function Login() {
         </div>
         <div class="row mb-4 text-center">
             <div class="col ">
-                <p>Don't have a account? <a href="#">Register</a></p>
+                <p>Don't have a account? <Link to='register'>Register</Link></p>
             </div>
         </div>
     </form>

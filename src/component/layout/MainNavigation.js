@@ -58,7 +58,7 @@ function MainNavigation() {
                         <div className="text">
                            <span className="text-muted">Welcome!</span>
                            <div> 
-                                 <Link to='/login'>Sign in</Link>|  
+                                 <Link to='/user/login'>Sign in</Link>|  
                                  <a href="#"> Register</a>
                            </div>
                         </div>
