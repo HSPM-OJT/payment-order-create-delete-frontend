@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom"
 import Card from "../../ui/Card"
-
+import { Link } from "react-router-dom"
 function Category(){
 
     return (

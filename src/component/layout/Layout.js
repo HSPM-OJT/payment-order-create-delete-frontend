@@ -6,7 +6,7 @@ import OrderList from "../order/OrderList"
 function Layout(props){
     return (
         <div className="container-fluid">
-            <MainNavigation />
+        <MainNavigation />
 
         <main>
         {props.children}
