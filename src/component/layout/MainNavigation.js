@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css"
 
 function MainNavigation() {
-    
     return(
       <div className={classes.bg}>
       <div className="p-3 mb-5 rounded">
@@ -54,12 +53,12 @@ function MainNavigation() {
                         <span className="badge badge-pill badge-danger notify">0</span>
                      </div>
                      <div className="widget-header icontext">
-                        <a href="#" className="shadow icon icon-sm rounded-circle border"><i className="fa fa-user"></i></a>
+                        <Link to="/profile" className="shadow icon icon-sm rounded-circle border"><i className="fa fa-user"></i></Link>
                         <div className="text">
                            <span className="text-muted">Welcome!</span>
                            <div> 
                                  <Link to='/login'>Sign in</Link>|  
-                                 <a href="#"> Register</a>
+                                 <Link to='/register'>Register</Link>|
                            </div>
                         </div>
                      </div>
