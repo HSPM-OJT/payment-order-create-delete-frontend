@@ -5,7 +5,7 @@ import MainNavigation from "./MainNavigation"
 function Layout(props){
     return (
         <div className="container-fluid">
-            <MainNavigation />
+        <MainNavigation />
 
         <main>
         {props.children}
