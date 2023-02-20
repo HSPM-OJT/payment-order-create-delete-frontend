@@ -38,7 +38,7 @@ function App() {
 
           <Route path='payment'>
             <Route path='all' element={<PaymentList />}></Route>
-            {/* <Route path='create/:orderId' element={<AddPaymentForm />}></Route> */}
+            <Route path='create/:orderId' element={<AddPaymentForm />}></Route>
             <Route path='create' element={<AddPaymentForm />}></Route>
             <Route path='update/:id' element={<UpdatePaymentForm />}></Route>
            

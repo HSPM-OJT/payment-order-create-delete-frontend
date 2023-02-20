@@ -7,15 +7,21 @@ const POST_NEW_PAYMENTS = 'http://localhost:8383/api/payment/create/'
 const DELETE_PAYMENTS = 'http://localhost:8383/api/payment/delete/'
 
 
+
 export const fetchPayments = createAsyncThunk('payments/fetchPayments',async ()=> {
     const response = await axios.get(GET_ALL_PAYMENTS)
     return response.data
 })
 
 export const addNewPayment = createAsyncThunk('payments/addNewPayment',async (data)=>{
-    const response = await axios.post(`${POST_NEW_PAYMENTS}${data.orderId}`,data.case)
+    const response = await axios.post(`${POST_NEW_PAYMENTS}${data.orderId}`,data.payment)
     return response.data
 })
+
+// export const addNewPayment = createAsyncThunk('payments/addNewPayment',async (data)=>{
+//     const response = await axios.post(POST_NEW_PAYMENTS,data.payment)
+//     return response.data
+// })
 
 export const updatePayment = createAsyncThunk('payments/updatePayment',async (data)=>{
     const response = await axios.post(POST_NEW_PAYMENTS,data)
@@ -66,10 +72,10 @@ export const paymentSlice = createSlice(
                 state.push(action.payload);
 
             },
-            prepare(cardNumber,cvc,holderName,cardType,expireDate){
+            prepare(paymentId,cardNumber,cvc,holderName,cardType,expireDate){
                 return {
                     payload:{
-                    
+                    paymentId,
                     cardNumber,
                     cvc,
                     holderName,
@@ -77,8 +83,8 @@ export const paymentSlice = createSlice(
                     expireDate
                     }
 
-                }
-            }
+                };
+            },
             
         }
 

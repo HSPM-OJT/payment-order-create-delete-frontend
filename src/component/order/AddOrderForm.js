@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { addNewOrder } from "./orderSlice"
 
 function AddOrderForm(){
+
+     const nevigate = useNavigate()
 
     const [customerName,setCustomerName] = useState('')
     const [productName,setProductName] = useState('')
@@ -11,8 +14,8 @@ function AddOrderForm(){
     const [subTotal,setSubTotal] = useState('')
     const [shippingCost,setShippingCost] = useState('')
     const [grandTotal,setGrandTotal] = useState('')
-    const [orderDate,setOrderDate] = useState('')
-    const [updateDate,setUpdateDate] = useState('')
+    // const [orderDate,setOrderDate] = useState('')
+    // const [updateDate,setUpdateDate] = useState('')
     const [addRequestStatus,setAddRequestStatus] = useState('idle')
 
     const onCustomerNameChange = e=> setCustomerName(e.target.value)
@@ -22,10 +25,10 @@ function AddOrderForm(){
     const onSubTotalChange = e => setSubTotal(e.target.value)
     const onShippingCostChange = e => setShippingCost(e.target.value)
     const onGrandTotalChange = e => setGrandTotal(e.target.value)
-    const onOrderDateChange = e => setOrderDate(e.target.value)
-    const onUpdateChange = e => setUpdateDate(e.target.value)
+    // const onOrderDateChange = e => setOrderDate(e.target.value)
+    // const onUpdateChange = e => setUpdateDate(e.target.value)
 
-    const canSave = [customerName,productName,price,quantity,subTotal,shippingCost,grandTotal,orderDate,updateDate].every(Boolean) && addRequestStatus === 'idle'
+    const canSave = [customerName,productName,price,quantity,subTotal,shippingCost,grandTotal/*,orderDate,updateDate*/].every(Boolean) && addRequestStatus === 'idle'
 
     const dispatch = useDispatch()
 
@@ -46,11 +49,12 @@ function AddOrderForm(){
                             subTotal,
                             shippingCost,
                             grandTotal,
-                            orderDate,
-                            updateDate
+                            // orderDate,
+                            // updateDate
                            } 
                         
                 })).unwrap()
+                nevigate('/order/all')
                 
             } catch (error) {
                 console.log(error)
@@ -70,8 +74,8 @@ function AddOrderForm(){
         setSubTotal('')
         setShippingCost('')
         setGrandTotal('')
-        setOrderDate('')
-       setUpdateDate('')
+    //     setOrderDate('')
+    //    setUpdateDate('')
         
     }
 
@@ -156,7 +160,7 @@ function AddOrderForm(){
 
 
                 
-                <div className="col-md-6 mb-3">
+                {/* <div className="col-md-6 mb-3">
                     <label htmlFor="expireDate">Order Date</label>
                     <input type="date" className="form-control" required 
                         value={orderDate}
@@ -169,11 +173,8 @@ function AddOrderForm(){
                         value={updateDate}
                         onChange={onUpdateChange}>
                     </input>
-                </div>
+                </div> */}
 
-               
-
-                
              
                 <div className="text-center col-md-6 mb-3">
                     <button class="btn btn-primary btn-lg btn-block text-center" type="submit" disabled={!canSave}>Continue to Payment</button>

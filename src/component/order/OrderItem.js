@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { deleteOrder } from "./orderSlice"
 
 
 function OrderItem(props){
+    const dispatch = useDispatch()
 
 
     return(
@@ -20,11 +24,20 @@ function OrderItem(props){
                         <p class="m-0">SubTotal : {props.subTotal}</p>
                         <p class="m-0">ShippingCost : {props.shippingCost}</p>
                         <p class="m-0">Grand total : {props.grandTotal}</p>
-                        <p class="m-0">OrderDate : {props.orderDate}</p>
-                        <p class="m-0">UpdateOrder : {props.updateDate}</p>
+                        {/* <p class="m-0">OrderDate : {props.orderDate}</p>
+                        <p class="m-0">UpdateOrder : {props.updateDate}</p> */}
                         
+                        <tr>
+                        <Link to={`/payment/create/${props.orderId}`} >
+                            <input type="submit" value = "Payment"/>
+                        </Link>
+
+                        <a onClick={()=>{dispatch(deleteOrder(props.orderId))}}>
+                        <input type="submit" value = "Delete"/></a>
+                        </tr>
+                       
                         
-                       {/* <tr>  
+                       {/*   
                         <Link to={`/payment/update/${props.paymentId}`} >
                             <input type="submit" value = "Edit"/>
                         </Link>

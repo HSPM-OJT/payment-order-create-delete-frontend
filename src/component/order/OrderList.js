@@ -38,8 +38,8 @@ function OrderList() {
                 subTotal={order.subTotal}
                 shippingCost={order.shippingCost}
                 grandTotal={order.grandTotal}
-                orderDate={order.orderDate}
-                updateDate={order.updateDate}
+                // orderDate={order.orderDate}
+                // updateDate={order.updateDate}
                 
                 
                  />

@@ -9,6 +9,8 @@ function AddPaymentForm(){
     const { orderId } = useParams()
     console.log(orderId)
 
+    // const navigate = Navigate()
+
     const [cardNumber,setCardNumber] = useState('')
     const [cvc,setCVC] = useState('')
     const [holderName,setHolderName] = useState('')
@@ -43,9 +45,12 @@ function AddPaymentForm(){
                             holderName,
                             cardType,
                             expireDate
-                           } ,orderId
+                           },orderId
+                       
                         
-                })).unwrap()
+                })).unwrap();
+
+                //  navigate('/payment/all')
                 
             } catch (error) {
                 console.log(error)
@@ -147,7 +152,7 @@ function AddPaymentForm(){
                 
              
                 <div className="text-center col-md-6 mb-3">
-                    <button class="btn btn-primary btn-lg btn-block text-center" type="submit" disabled={!canSave}>Continue to Payment</button>
+                    <button class="btn btn-primary btn-lg btn-block text-center" type="submit" disabled={!canSave}>Submit</button>
                 </div>
                 
 

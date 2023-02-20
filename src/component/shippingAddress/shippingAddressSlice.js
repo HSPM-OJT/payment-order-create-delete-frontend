@@ -12,7 +12,7 @@ export const fetchShippingAddresses = createAsyncThunk('shippingAddresses/fetchS
 })
 
 export const addNewShippingAddress = createAsyncThunk('shippingAddresses/addNewShippingAddress',async (initialShippingAddress)=>{
-    const response = await axios.get(POST_NEW_SHIPPINGADDRESSES,initialShippingAddress)
+    const response = await axios.post(POST_NEW_SHIPPINGADDRESSES,initialShippingAddress)
     return response.data
 
 })

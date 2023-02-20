@@ -24,6 +24,7 @@ function PaymentItem(props){
                         <p class="m-0">CVC : {props.cvc}</p>
                         <p class="m-0">CardType : {props.cardType}</p>
                         <p class="m-0">ExpireDate : {props.expireDate}</p>
+                       
                         
                        <tr>  
                         <Link to={`/payment/update/${props.paymentId}`} >
