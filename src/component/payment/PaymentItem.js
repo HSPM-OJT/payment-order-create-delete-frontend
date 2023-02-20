@@ -17,9 +17,7 @@ function PaymentItem(props){
             <div class="row g-10">
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-user-md text-white"></i>
-                        </div>
+                       
                         <span class="ml-0  align-items-left">Id : {props.paymentId}</span>
                         <h4 class="mb-3">Holder Name : {props.holderName}</h4>
                         <p class="m-0">CardNumber : {props.cardNumber}</p>
@@ -36,13 +34,15 @@ function PaymentItem(props){
                         <input type="submit" value = "Delete"/></a>
                         </tr>  
 
+                        <br />
+
                     </div>
                 </div>
                
             </div>
         </div>
     </div>
-
+    
 
     //     <div class="container">
     //         <h5 className="text-center">Payment form</h5>

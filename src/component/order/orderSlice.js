@@ -1,49 +1,38 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const GET_ALL_ORDER = 'http://localhost:8383/api/order/all';
-const POST_NEW_ORDER = 'http://localhost:8383/api/order/create';
+const GET_ALL_ORDERS = 'http://localhost:8383/api/order/all'
+const POST_NEW_ORDERS= 'http://localhost:8383/api/order/create'
 
-export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
-    const response = await axios.get(GET_ALL_ORDER)
-    // console.log("Response object"+response.data)
+export const fetchOrders = createAsyncThunk('orders/fetchOrders',async ()=>{
+    const response = await axios.get(GET_ALL_ORDERS)
     return response.data
 })
 
-
-export const addNewOrder = createAsyncThunk('orders/addNewOrder', async (order) => {
-    const response = await axios.post(POST_NEW_ORDER,order)
+export const addNewOrder = createAsyncThunk('orders/addNewOrder',async (initailOrder)=>{
+    const response = await axios.get(POST_NEW_ORDERS,initailOrder)
     return response.data
 })
 
-const initialState = {
+const initialState ={
     orders:[],
     status:'idle',
     error:null
 }
 
-export const orderSlice = createSlice({
-    name:'orders',
-    initialState,
-    reducers:{
-        addOrder:{
-            reducer(state,action){
-                state.push(action.payload)
-            },
-            prepare(
-                productName,
-                price,
-                quantity,
-                subTotal,
-                shippingCost,
-                grandTotal,
-                orderDate,
-                customerName,
-                email,
-                phone,
-                ){
-                    return {
+export const orderSlice = createSlice(
+    {
+        name:'orders',
+        initialState,
+        reducers:{
+            addOrder:{
+                reducer(state,action){
+                    state.push(action.payload)
+                },
+                prepare(customerName,productName,price,quantity,subTotal,shippingCost,grandTotal,orderDate,updateDate){
+                    return{
                         payload:{
+                            customerName,
                             productName,
                             price,
                             quantity,
@@ -51,42 +40,38 @@ export const orderSlice = createSlice({
                             shippingCost,
                             grandTotal,
                             orderDate,
-                            customerName,
-                            email,
-                            phone,
+                            updateDate
                         }
                     }
-                },
+                }
+            }
+        },
+        extraReducers(builder){
+            builder
+            .addCase(fetchOrders.pending,(state,action)=>{
+                state.status = 'loading'
+            })
+            .addCase(fetchOrders.fulfilled,(state,action)=>{
+                state.status = 'succeeded'
+
+                state.orders = action.payload
+            })
+            .addCase(fetchOrders.rejected,(state,action)=>{
+                
+                state.status = 'failed'
+                state.error = action.error.message
+            })
+            .addCase(addNewOrder.fulfilled,(state,action)=>{
+                state.orders.push(action.payload)
+            })
+
         }
-
-    },
-    extraReducers(builder){
-        builder
-        .addCase(fetchOrders.pending,(state,action) => {
-            state.status = 'loading'
-        })
-        .addCase(fetchOrders.fulfilled,(state,action) => {
-            state.status = 'succeeded'
-            // state.orders = state.orders.concat(action.payload)
-            state.orders = action.payload
-        })
-        .addCase(fetchOrders.rejected,(state,action) => {
-            state.status = 'failded'
-
-            state.error = action.error.message
-        })
-        .addCase(addNewOrder.fulfilled,(state,action) => {
-            state.orders.push(action.payload)
-        })
     }
-})
+);
 
 export const selectAllOrders = (state) => state.orders.orders
 export const getOrderStatus = (state) => state.orders.status
 export const getOrderError = (state) => state.orders.error
-export const selectOrderById = (state,orderId) => state.orders.orders.find(order => order.id)
-
 
 export const { addOrder } = orderSlice.actions
-
 export default orderSlice.reducer

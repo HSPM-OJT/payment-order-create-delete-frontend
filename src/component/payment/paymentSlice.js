@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const GET_ALL_PAYMENTS = 'http://localhost:8383/api/payment/all'
-const POST_NEW_PAYMENTS = 'http://localhost:8383/api/payment/create'
+const POST_NEW_PAYMENTS = 'http://localhost:8383/api/payment/create/'
 const DELETE_PAYMENTS = 'http://localhost:8383/api/payment/delete/'
 
 
@@ -12,8 +12,8 @@ export const fetchPayments = createAsyncThunk('payments/fetchPayments',async ()=
     return response.data
 })
 
-export const addNewPayment = createAsyncThunk('payments/addNewPayment',async (initialPayment)=>{
-    const response = await axios.post(POST_NEW_PAYMENTS,initialPayment)
+export const addNewPayment = createAsyncThunk('payments/addNewPayment',async (data)=>{
+    const response = await axios.post(`${POST_NEW_PAYMENTS}${data.orderId}`,data.case)
     return response.data
 })
 
@@ -102,11 +102,7 @@ export const paymentSlice = createSlice(
 
                     state.payments.push(action.payload)
                 })
-                .addCase(addNewPayment.rejected,(state,action)=>{
-                    state.status = 'failed'
-
-                    state.error = action.error.message;
-                })
+              
                 .addCase(updatePayment.fulfilled,(state,action)=>{
                     const payment = action.payload
                     const payments = state.payments.filter(p => p.id !== payment.paymentId)

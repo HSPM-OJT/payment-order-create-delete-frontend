@@ -1,9 +1,13 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react";
 import { addNewPayment } from "./paymentSlice";
+import { useParams } from "react-router-dom";
 
 
 function AddPaymentForm(){
+
+    const { orderId } = useParams()
+    console.log(orderId)
 
     const [cardNumber,setCardNumber] = useState('')
     const [cvc,setCVC] = useState('')
@@ -32,12 +36,14 @@ function AddPaymentForm(){
                 setAddRequestStatus('pending')
 
                 dispatch(
-                    addNewPayment({ //{ object}
+                    addNewPayment({//{ object}
+                           payment:{
                             cardNumber,
                             cvc,
                             holderName,
                             cardType,
                             expireDate
+                           } ,orderId
                         
                 })).unwrap()
                 

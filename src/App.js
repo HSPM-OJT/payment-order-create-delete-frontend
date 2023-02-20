@@ -2,8 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CategoryList from './component/categories/CategoryList';
 import Layout from './component/layout/Layout';
-import AddOrderForm from './component/order/AddOrderForm'
-import Order from './component/order/Order';
+import AddOrderForm from './component/order/AddOrderForm';
 import OrderList from './component/order/OrderList';
 import ProductList from './component/product/ProductList';
 import Scroll from './component/scrolling/Scroll';
@@ -14,6 +13,9 @@ import Dashboard from './component/Dashboard';
 import PaymentList from './component/payment/PaymentList';
 import AddPaymentForm from './component/payment/AddPaymentForm';
 import UpdatePaymentForm from './component/payment/UpdatePaymentForm';
+import AddShippingAddressForm from './component/shippingAddress/AddShippingAddressForm';
+import ShippingAddressList from './component/shippingAddress/ShippingAddressList';
+import UpdateShippingAddressForm from './component/shippingAddress/UpdateShippingAddressForm';
 
 
 
@@ -36,9 +38,16 @@ function App() {
 
           <Route path='payment'>
             <Route path='all' element={<PaymentList />}></Route>
+            {/* <Route path='create/:orderId' element={<AddPaymentForm />}></Route> */}
             <Route path='create' element={<AddPaymentForm />}></Route>
             <Route path='update/:id' element={<UpdatePaymentForm />}></Route>
            
+          </Route>
+
+          <Route path='shippingAddress'>
+            <Route path='create' element={<AddShippingAddressForm />}></Route>
+            <Route path='all' element={<ShippingAddressList />}></Route>
+            <Route path='update/:id' element={<UpdateShippingAddressForm />}></Route>
           </Route>
        
           <Route path='product'>
@@ -46,7 +55,6 @@ function App() {
           </Route>
        
           <Route path='order'>
-            <Route path='r' element={<Order />}></Route>
             <Route path='create' element={<AddOrderForm />}></Route>
             <Route path='all' element={<OrderList />}></Route>
           </Route>

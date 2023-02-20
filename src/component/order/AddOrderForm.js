@@ -1,187 +1,193 @@
-import { useDispatch} from "react-redux";
-import { useState } from "react";
-import { addNewOrder} from "./orderSlice";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { addNewOrder } from "./orderSlice"
 
 function AddOrderForm(){
 
-    const navigate = useNavigate()
-
+    const [customerName,setCustomerName] = useState('')
     const [productName,setProductName] = useState('')
     const [price,setPrice] = useState('')
     const [quantity,setQuantity] = useState('')
+    const [subTotal,setSubTotal] = useState('')
     const [shippingCost,setShippingCost] = useState('')
-    const [customerName,setCustomerName] = useState('')
-    const [email,setEmail] = useState('')
-    const [phone,setPhone] = useState('')
-    const [street,setStreet] = useState('')
-    const [township,setTownship] = useState('')
-    const [city,setCity] = useState('')
-    const [country,setCountry] = useState('')
-
+    const [grandTotal,setGrandTotal] = useState('')
+    const [orderDate,setOrderDate] = useState('')
+    const [updateDate,setUpdateDate] = useState('')
     const [addRequestStatus,setAddRequestStatus] = useState('idle')
 
+    const onCustomerNameChange = e=> setCustomerName(e.target.value)
     const onProductNameChange = e => setProductName(e.target.value)
     const onPriceChange = e => setPrice(e.target.value)
     const onQuantityChange = e => setQuantity(e.target.value)
-    
+    const onSubTotalChange = e => setSubTotal(e.target.value)
     const onShippingCostChange = e => setShippingCost(e.target.value)
-   
-    const onCustomerNameChange = e => setCustomerName(e.target.value)
-    const onEmailChange = e => setEmail(e.target.value)
-    const onPhoneChange = e => setPhone(e.target.value)
-    const onStreetChange = e => setStreet(e.target.value)
-    const onTownshipChange = e => setTownship(e.target.value)
-    const onCityChange = e => setCity(e.target.value)
-    const onCountryChange = e => setCountry(e.target.value)
+    const onGrandTotalChange = e => setGrandTotal(e.target.value)
+    const onOrderDateChange = e => setOrderDate(e.target.value)
+    const onUpdateChange = e => setUpdateDate(e.target.value)
 
-    const canCreate = [productName,price,quantity,shippingCost,customerName,email,phone,street,township,city,country].every(Boolean) && addRequestStatus === 'idle'
-    // console.log(canCreate)
+    const canSave = [customerName,productName,price,quantity,subTotal,shippingCost,grandTotal,orderDate,updateDate].every(Boolean) && addRequestStatus === 'idle'
 
     const dispatch = useDispatch()
 
-    const onSubmit = (event) => {
+    const onSubmit = (event)=>{
         event.preventDefault()
 
-        if(canCreate){
-            try{
+        if(canSave){
+            try {
                 setAddRequestStatus('pending')
 
                 dispatch(
-                    addNewOrder({
-                        order:{
+                    addNewOrder({//{ object}
+                           order:{
+                            customerName,
                             productName,
                             price,
                             quantity,
+                            subTotal,
                             shippingCost,
-                            customerName,
-                            email,
-                            phone,
-                            street,
-                            township,
-                            city,
-                            country
-                        }
-                    }),
-                ).unwrap()
-                navigate('/')
-            }catch(error){
+                            grandTotal,
+                            orderDate,
+                            updateDate
+                           } 
+                        
+                })).unwrap()
+                
+            } catch (error) {
                 console.log(error)
+                
             }finally{
                 setAddRequestStatus('idle')
             }
 
-            setCustomerName('')
-            setEmail('')
-            setPhone('')
-            setStreet('')
-            setTownship('')
-            setCity('')
             
-        }
+        
+
+        //form clean
+        setCustomerName('') 
+        setProductName('')
+        setPrice('')
+        setQuantity('')
+        setSubTotal('')
+        setShippingCost('')
+        setGrandTotal('')
+        setOrderDate('')
+       setUpdateDate('')
+        
+    }
+
     }
 
     return(
         <main>
-            <div className="container">
-            <div className="row">
-            
-            <div className="col-md-7 order-md-1">
-                <h4 className="mb-3 text-center">Billing detail</h4>
+    <div className="container">
+        <div className="row">
+
+            <div className="col-md-4 payment-md-1">
+            </div>
+        
+            <div className="col-md-7 payment-md-1">
+                <h4 className="col-md-6 mb-3 text-center">Add Order Form</h4>
                 <form onSubmit={onSubmit} >
-                <input type='hidden' value="Dell inspiron 5" onChange={onProductNameChange}></input>
-                <input type='hidden' value='2000000' onChange={onPriceChange}></input>
-                <input type='hidden' value='2' onChange={onQuantityChange}></input>
-                <input type='hidden' value='3000' onChange={onShippingCostChange} ></input>
-                <div className="row">
+
+                
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="customerName">Customer name</label>
+                    <label htmlFor="customerName">Customer Name</label>
                     <input type="text" className="form-control" required 
-                    value={customerName} 
-                    onChange={onCustomerNameChange}
-                    ></input>
+                        value={customerName}
+                        onChange={onCustomerNameChange}>
+                    </input>
                     
                 </div>
+          
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="productName">Product Name</label>
+                    <input type="text" className="form-control" required 
+                        value={productName}
+                        onChange={onProductNameChange}>
+                    </input>
+                   
                 </div>
 
-                <div className="mb-3">
-                <label htmlFor="username">Email</label>
-                <div className="input-group">
-                <div className="input-group-prepend">
-                    <span className="input-group-text">@</span>
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="price">Price</label>
+                    <input type="text" className="form-control" required 
+                        value={price}
+                        onChange={onPriceChange}>
+                    </input>
+                    
                 </div>
-                <input type="email" class="form-control" id="email" placeholder="Email" required 
-                value={email}
-                onChange={onEmailChange}
-                ></input>
-                <div class="invalid-feedback">
-                Your email is required.
+
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="quantity">Quantity</label>
+                    <input type="text" className="form-control" required 
+                        value={quantity}
+                        onChange={onQuantityChange}>
+                    </input>
+                    
                 </div>
+
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="subTotal">SubTotal</label>
+                    <input type="text" className="form-control" required 
+                        value={subTotal}
+                        onChange={onSubTotalChange}>
+                    </input>
+                    
                 </div>
+
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="shippingCost">ShippingCost</label>
+                    <input type="text" className="form-control" required 
+                        value={shippingCost}
+                        onChange={onShippingCostChange}>
+                    </input>
+                    
+                </div>
+
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="grandtotal">GrandTotal</label>
+                    <input type="text" className="form-control" required 
+                        value={grandTotal}
+                        onChange={onGrandTotalChange}>
+                    </input>
+                    
+                </div>
+
+
+
+                
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="expireDate">Order Date</label>
+                    <input type="date" className="form-control" required 
+                        value={orderDate}
+                        onChange={onOrderDateChange}>
+                    </input>
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="expireDate">Update Date</label>
+                    <input type="date" className="form-control" required 
+                        value={updateDate}
+                        onChange={onUpdateChange}>
+                    </input>
+                </div>
+
+               
+
+                
+             
+                <div className="text-center col-md-6 mb-3">
+                    <button class="btn btn-primary btn-lg btn-block text-center" type="submit" disabled={!canSave}>Continue to Payment</button>
                 </div>
                 
-                <div className="mb-3">
-                <label htmlFor="address">Phone</label>
-                <input type="text" class="form-control" placeholder="09*********" required 
-                value={phone}
-                onChange={onPhoneChange}
-                ></input>
-                </div>
-                <div className="row">
-                <div className="col-md-6 mb-3">
-                <label htmlFor="country">Street</label>
-                    {/* <select class="" id="street" required>
-                        <option value="">Choose...</option>
-                        <option>Mynamar</option>
-                    </select> */}
-                    <input className="d-block w-100 form-control" type="text" required 
-                    value={street}
-                    onChange={onStreetChange}
-                    ></input>
-                
-                </div>
-                <div className="col-md-6 mb-3">
-                    <label htmlFor="state">Township</label>
-                    <input className="d-block w-100 form-control" type="text" required 
-                    value={township}
-                    onChange={onTownshipChange}
-                    ></input>
-                </div>
-                </div>
-                <div className="row">
-                <div className="col-md-6 mb-3">
-                <label htmlFor="country">City</label>
-                    <select class="custom-select d-block w-100 form-control" id="country" required 
-                    value={city} 
-                    onChange={onCityChange}
-                    >
-                        <option value="">Choose...</option>
-                        <option>Yangon</option>
-                        <option>Mandalay</option>
-                        <option>Naypyitaw</option>
-                        <option>Others</option>
-                    </select>
-                <div class="invalid-feedback">
-                    Please select a valid City.
-                </div>
-                </div>
-                <div className="col-md-6 mb-3">
-                    <label htmlFor="state">Country</label>
-                    <input className="d-block w-100 form-control" type="text" value="Myanmar" disabled
-                    onChange={onCountryChange}
-                    ></input>
-                </div>
-                </div>
-                 
-                <button className="btn btn-primary" type="submit" >Continue to checkout</button>
 
                 </form>
-                
+            
             </div>
-            </div>
-            </div>
-        </main>
+        </div>
+    </div>
+    <br />
+</main> 
     )
 }
 
-export default AddOrderForm;
+export default AddOrderForm

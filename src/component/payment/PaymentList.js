@@ -25,6 +25,7 @@ function PaymentList(){
     }
 
     if(paymentStatus === 'succeeded'){
+        console.log()
         content = payments.map(
             (payment)=>(
                 <PaymentItem

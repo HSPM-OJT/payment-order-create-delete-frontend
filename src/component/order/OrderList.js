@@ -1,15 +1,17 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react";
-import Order from "./Order";
-import { selectAllOrders,getOrderStatus, fetchOrders } from "./orderSlice";
+import OrderItem from "./OrderItem";
+import { selectAllOrders, getOrderStatus,getOrderError,fetchOrders } from "./orderSlice";
 
 function OrderList() {
 
     const dispatch = useDispatch()
-    console.log('dispatch')
+    
+
     const orders = useSelector(selectAllOrders)
     console.log("OrderList"+orders)
     const orderStatus = useSelector(getOrderStatus)
+    const error = useSelector(getOrderError)
 
     useEffect(() => {
         if(orderStatus === 'idle'){
@@ -27,7 +29,9 @@ function OrderList() {
         console.log()
         content = orders.map(
             (order) => (
-                <Order 
+                <OrderItem 
+                orderId={order.orderId}
+                customerName={order.customerName}
                 productName={order.productName}
                 price={order.price}
                 quantity={order.quantity}
@@ -35,12 +39,16 @@ function OrderList() {
                 shippingCost={order.shippingCost}
                 grandTotal={order.grandTotal}
                 orderDate={order.orderDate}
-                customerName={order.customerName}
-                email={order.email}
-                phone={order.phone}
+                updateDate={order.updateDate}
+                
+                
                  />
             )
-        )
+        );
+    }
+
+    if(orderStatus === 'failed'){
+        content = (<p>{error}</p>)
     }
 
     return content
